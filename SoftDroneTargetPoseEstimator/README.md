@@ -1,5 +1,7 @@
 # SoftDrone-Target-Pose-Estimator
-Package for target pose estimating
+Package for target pose estimating for the soft drone project.
+
+## Details for reviewer
 
 *`config/` contains yaml files for tunable parameters.
 
