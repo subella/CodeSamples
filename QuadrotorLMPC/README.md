@@ -10,3 +10,5 @@ This repo contains code for our Underactuated final project. It uses a linearize
 * `vehicle_dynamics.py` contains some transition matrices for the car.
 
 * `vechicle_prediction.py` implements an EKF and polynomial regression to make predictions on car's future state under noise.
+
+* `6832_Final_Report.pdf` details our approach.
