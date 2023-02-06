@@ -11,3 +11,5 @@ The spring's topology is then optimized using NSGA-II to minimize peak stress an
 * `ga.py` runs NSGA-II on these parameters to optimize the topology.
 
 * `utils.py` runs finite element analysis on mesh to find peak stress and spring constant.
+
+* `2_s997_Final_Project.pdf` details our approach.
