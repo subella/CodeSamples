@@ -1,0 +1,11 @@
+<launch>
+  <group ns="soft_drone">
+    <node pkg="softdrone_target_pose_estimator"
+          name="reproject_keypoints_node"
+          type="reproject_keypoints_node"
+          output="screen">
+    </node>
+
+    <rosparam command="load" file="$(find softdrone_target_pose_estimator)/config/reproject_keypoints_params.yaml" subst_value="true"/>
+  </group>
+</launch>

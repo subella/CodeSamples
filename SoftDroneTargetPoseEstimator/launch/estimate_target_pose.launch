@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find softdrone_target_pose_estimator)/launch/keypoint_detector.launch" />
+  <include file="$(find softdrone_target_pose_estimator)/launch/reproject_keypoints.launch" />
+  <include file="$(find softdrone_target_pose_estimator)/launch/pose_estimator.launch" />
+  <include file="$(find softdrone_target_pose_estimator)/launch/plotter.launch" />
+</launch>

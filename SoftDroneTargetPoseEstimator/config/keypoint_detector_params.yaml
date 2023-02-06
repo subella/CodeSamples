@@ -1,0 +1,6 @@
+keypoint_detector_params:
+  rgb_img_topic: "/camera/color/image_raw"
+  model_file_name: "$(env HOME)/KeypointDetectorModels/model_hardware_jitted"
+  should_publish_annotated_img: true
+  keypoints_topic: "/detected_keypoints"
+  annotated_img_topic: "/keypoints_image"

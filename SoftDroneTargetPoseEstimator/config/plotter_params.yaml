@@ -1,0 +1,5 @@
+plotter_params:
+  rgb_img_sub_topic: "/camera/color/image_raw"
+  cad_keypoints_sub_topic: "/cad_frame_keypoints"
+  estimated_pose_sub_topic: "/soft_drone/target_global_pose_estimate"
+  reprojected_cad_keypoints_img_pub_topic: "/reprojected_cad_keypoints_img"

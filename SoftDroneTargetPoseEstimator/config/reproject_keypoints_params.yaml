@@ -1,0 +1,7 @@
+reproject_keypoints_params:
+  keypoints_2D_sub_topic: "/detected_keypoints"
+  keypoints_3D_sub_topic: "/transformed_cad_frame"
+  rgb_cam_info_sub_topic: "/camera/color/camera_info"
+  depth_img_sub_topic: "/camera/aligned_depth_to_color/image_raw"
+  keypoints_2D_pub_topic: "/projected_cad_frame"
+  keypoints_3D_pub_topic: "/reprojected_detected_keypoints"

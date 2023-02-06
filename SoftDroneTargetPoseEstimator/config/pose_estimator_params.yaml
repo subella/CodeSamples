@@ -1,0 +1,12 @@
+pose_estimator_params:
+  keypoints_3D_sub_topic: "/reprojected_detected_keypoints"
+  pose_pub_topic: "/estimated_pose"
+  transformed_cad_frame_pub_topic: "/cad_frame_keypoints"
+  cad_frame_file_name: "$(env HOME)/CadFrames/box.csv"
+  noise_bound: 10
+  cbar2: 1
+  estimate_scaling: false
+  rotation_max_iterations: 100
+  rotatation_gnc_factor: 1.4
+  rotation_cost_threshold: 0.005
+

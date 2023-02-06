@@ -1,0 +1,12 @@
+<launch>
+  <group ns="soft_drone">
+    <node pkg="softdrone_target_pose_estimator"
+          name="pose_estimator_node"
+          type="pose_estimator_node"
+          output="screen"
+          launch-prefix="gdb -ex run --args">
+    </node>
+
+    <rosparam command="load" file="$(find softdrone_target_pose_estimator)/config/pose_estimator_params.yaml" subst_value="true"/>
+  </group>
+</launch>
