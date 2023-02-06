@@ -1,0 +1,56 @@
+# Multi-Agent Interaction Prediction
+This repo contains code for our Cognitive Robotics final project on multi-agent interaction prediction. 
+It includes a custom simulation environment designed around 2 cars at a 4 way intersection. 
+We provide an automated data-generation script as well as ability to see the model's predictions in real time.
+
+## Installation
+First, clone the repo. You must use python3. A virtual enviornment is recommended.
+Then:
+```
+cd cog-rob-multi-agent-prediction-project
+pip install -e .
+```
+This will install most of the dependencies, however some of them you have to manually install (torch-geometric, etc). 
+just install the packages as you run into errors.
+
+## Usage
+The simulation includes 2 modes: data generation and interaction prediction.
+For both modes there are 2 cars. These are the controls:
+#### Bottom Car
+- w - moves car up
+- s - moves car down
+- e - brakes car
+- q - turns on car siren
+
+#### Right Car
+- left arrow - moves car left
+- right arrow - moves car right
+- period - brakes car
+- right shift - turns on car siren
+
+## Data Generation
+To launch the data generation mode run the commands:
+```
+cd examples
+python demo.py --mode generation
+```
+In this mode, you first control both cars to model how humans would respond in an example intersection scenario. 
+When you are done with a scenrio, press `p`.
+The sim will then play back your motions and heuristically assign interaction labels for each timestep. 
+Once its done, you can control the cars again to create another scenario.
+When you are finished hit `escape` to save and exit. (You can't escape while its in playback mode).
+The sim will format the data in json and save it in the data folder.
+
+## Interaction Prediction
+To launch this mode run:
+```
+cd examples
+python demo.py --mode prediction
+```
+
+Again you can control both cars. The sim will use our trained neural net to assign interaction labels to each vehicle as you are driving.
+Hit `escape` to exit, or `p` to reset the scene.
+
+## Training Model
+
+The trainning.ipynb located in the the notebooks/ directory is the main driver for loading the datasets and trainning our model. The output of the model will be saved in the same directoy as interactionnetwork_best.pth. The datasets used to test and train are located in the /data directory. If you want your model to be used in the simulation you must name your model best_model.pth and move it to the /models directory, replacing the existing one. 
