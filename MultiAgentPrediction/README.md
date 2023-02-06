@@ -21,6 +21,8 @@ We provide an automated data-generation script as well as ability to see the mod
 
 * `notebooks/` has jupyter notebooks to train the GNN.
 
+* `Multi_Agent_Discrete_Interaction_Prediction.pdf` details our approach.
+
 ## Installation
 First, clone the repo. You must use python3. A virtual enviornment is recommended.
 Then:
