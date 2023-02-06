@@ -3,19 +3,19 @@ Package for target pose estimating for the soft drone project.
 
 ## Details for reviewer
 
-*`config/` contains yaml files for tunable parameters.
+* `config/` contains yaml files for tunable parameters.
 
-*`include/` contains cpp files for plotting, keypoint detection, keypoint projection, and point cloud registration.
+* `include/` contains cpp files for plotting, keypoint detection, keypoint projection, and point cloud registration.
 
-*`launch/` contains launch files for ros nodes.
+* `launch/` contains launch files for ros nodes.
 
-*`msg/` contains custom keypoint message.
+* `msg/` contains custom keypoint message.
 
-*`notebooks/` contains jupyter notebooks for keypoint training and pose estimation evalutation scripts.
+* `notebooks/` contains jupyter notebooks for keypoint training and pose estimation evalutation scripts.
 
-*`src/` contains entry points for ros nodes (as well as a hacky python-keypoint detector wrapper)
+* `src/` contains entry points for ros nodes (as well as a hacky python-keypoint detector wrapper)
 
-*`tests/` has some data for unit tests.
+* `tests/` has some data for unit tests.
 
 
 ## Requirements
