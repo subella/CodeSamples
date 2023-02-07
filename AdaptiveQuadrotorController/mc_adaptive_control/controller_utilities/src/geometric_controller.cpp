@@ -152,41 +152,32 @@ void GeometricPosController::_derive_unit_vector(Vector3f& q, Vector3f& q_dot, V
 
 void GeometricPosController::_get_rotation_and_derivatives(double yaw_d) {
     
+  Vector3f q = -_A;
+  Vector3f q_dot = -_A_dot;
+  Vector3f q_ddot = -_A_ddot;
+  Vector3f b3c, b3c_dot, b3c_ddot;
+  _derive_unit_vector(q, q_dot, q_ddot, b3c, b3c_dot, b3c_ddot);
+  
   const Vector3f b1d(cos(yaw_d), sin(yaw_d), 0.0f);
-  const Vector3f b3c = -_A.unit();
-  const Vector3f C = b3c.cross(b1d);
-  const Vector3f b2c = C.unit();
-  const Vector3f b1c = b2c.cross(b3c);
+
+  Vector3f A2 = -Hat(b1d) * b3c;
+  Vector3f A2_dot = -Hat(b1d) * b3c_dot;
+  Vector3f A2_ddot = -Hat(b1d) * b3c_ddot;
+  Vector3f b2c, b2c_dot, b2c_ddot;
+  _derive_unit_vector(A2, A2_dot, A2_ddot, b2c, b2c_dot, b2c_ddot);
+
+  Vector3f b1c = Hat(b2c) * b3c;
+  Vector3f b1c_dot = Hat(b2c_dot) * b3c + Hat(b2c) * b3c_dot;
+  Vector3f b1c_ddot = Hat(b2c_ddot) * b3c + 2.0f * Hat(b2c_dot) * b3c_dot +
+                      Hat(b2c) * b2c_ddot;
 
   _Rd.setCol(0, b1c);
   _Rd.setCol(1, b2c);
   _Rd.setCol(2, b3c);
-  _Rd.renormalize();
-
-  const float A_norm = _A.norm();
-  const float C_norm = C.norm();
-  const Vector3f b3c_dot = -_A_dot / A_norm + (_A.dot(_A_dot) / powf(A_norm, 3)) * _A;
-  const Vector3f C_dot = b3c_dot.cross(b1d);
-  const Vector3f b2c_dot = C_dot / C_norm - (C.dot(C_dot) / powf(C_norm, 3)) * C;
-  const Vector3f b1c_dot = b2c_dot.cross(b3c) + b2c.cross(b3c_dot);
 
   _Rd_dot.setCol(0, b1c_dot);
   _Rd_dot.setCol(1, b2c_dot);
   _Rd_dot.setCol(2, b3c_dot);
-
-  const float Adot_norm = _A_dot.norm();
-  const Vector3f b3c_ddot =
-      -_A_ddot / A_norm + 2 * _A.dot(_A_dot) / powf(A_norm, 3) * _A_dot +
-      (powf(Adot_norm, 2) + _A.dot(_A_ddot)) / powf(A_norm, 3) * _A -
-      3 * powf(_A.dot(_A_dot), 2) / powf(A_norm, 5) * _A;
-  const Vector3f C_ddot = b3c_ddot.cross(b1d);
-  const float Cdot_norm = C_dot.norm();
-  const Vector3f b2c_ddot = C_ddot / C_norm -
-                            2 * C.dot(C_dot) / powf(C_norm, 3) * C_dot -
-                            (powf(Cdot_norm, 2) + C.dot(C_ddot)) / powf(C_norm, 3) * C +
-                            3 * powf(C.dot(C_dot), 2) / powf(C_norm, 5) * C;
-  const Vector3f b1c_ddot =
-      b2c_ddot.cross(b3c) + 2.0f * b2c_dot.cross(b3c_dot) + b2c.cross(b3c_ddot);
 
   _Rd_ddot.setCol(0, b1c_ddot);
   _Rd_ddot.setCol(1, b2c_ddot);
