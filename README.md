@@ -3,7 +3,7 @@ Various pieces of code from my research and school work. There may be more in he
 
 1. SoftDroneTargetPoseEstimator
 2. PerformanceEngineeringProjects
-3. [AutomatedAnnotater](https://github.com/subella/AutomatedAnnotater)
+3. [AutomatedAnnotator](https://github.com/subella/AutomatedAnnotator)
 4. AdaptiveQuadrotorController
 5. QuadrotorLMPC
 6. MultiAgentPrediction
